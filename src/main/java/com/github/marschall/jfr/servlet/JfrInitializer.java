@@ -16,6 +16,7 @@ public final class JfrInitializer implements ServletContainerInitializer {
   public void onStartup(Set<Class<?>> c, ServletContext ctx) {
     Dynamic registration = ctx.addFilter("jfrFilter", JfrFilter.class);
     registration.addMappingForUrlPatterns(null, true, "/*");
+    registration.setAsyncSupported(true);
   }
 
 }

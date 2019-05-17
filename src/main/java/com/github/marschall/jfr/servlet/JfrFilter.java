@@ -2,6 +2,8 @@ package com.github.marschall.jfr.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.AsyncEvent;
+import javax.servlet.AsyncListener;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -24,7 +26,11 @@ public final class JfrFilter implements Filter {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
-    
+
+    if (request.isAsyncStarted()) {
+      // 
+    }
+
     HttpEvent event = new HttpEvent();
     if (request instanceof HttpServletRequest) {
       HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -32,7 +38,7 @@ public final class JfrFilter implements Filter {
       event.setUri(httpRequest.getRequestURI());
       event.setQuery(httpRequest.getQueryString());
     }
-    
+
     event.begin();
     try {
       chain.doFilter(request, response);
@@ -44,9 +50,44 @@ public final class JfrFilter implements Filter {
       event.end();
       event.commit();
     }
-    
+
   }
-  
+
+
+  static final class AsyncJfrListener implements AsyncListener {
+    
+    private final HttpEvent event;
+
+    AsyncJfrListener(HttpEvent event) {
+      this.event = event;
+    }
+
+    @Override
+    public void onComplete(AsyncEvent event) throws IOException {
+      endEvent("complete");
+    }
+
+    @Override
+    public void onTimeout(AsyncEvent event) throws IOException {
+      endEvent("timeout");
+    }
+
+    @Override
+    public void onError(AsyncEvent event) throws IOException {
+      endEvent("error");
+    }
+
+    @Override
+    public void onStartAsync(AsyncEvent event) throws IOException {
+      // ignore
+    }
+    
+    private void endEvent(String state) {
+      this.event.end();
+      this.event.commit();
+    }
+
+  }
 
 
   @Label("HTTP exchange")
@@ -66,7 +107,7 @@ public final class JfrFilter implements Filter {
     @Label("Query")
     @Description("The query string")
     private String query;
-    
+
     @Label("Status")
     @Description("The HTTP response status code")
     private int status;
@@ -102,7 +143,7 @@ public final class JfrFilter implements Filter {
     void setStatus(int status) {
       this.status = status;
     }
-    
+
   }
 
 }
