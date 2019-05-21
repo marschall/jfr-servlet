@@ -1,5 +1,6 @@
 package com.github.marschall.jfr.servlet;
 
+import java.util.EnumSet;
 import java.util.Set;
 
 import javax.servlet.DispatcherType;
@@ -15,7 +16,7 @@ public final class JfrInitializer implements ServletContainerInitializer {
   @Override
   public void onStartup(Set<Class<?>> c, ServletContext ctx) {
     Dynamic registration = ctx.addFilter("jfrFilter", JfrFilter.class);
-    registration.addMappingForUrlPatterns(null, true, "/*");
+    registration.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
     registration.setAsyncSupported(true);
   }
 
