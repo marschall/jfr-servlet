@@ -28,7 +28,7 @@ import jdk.jfr.StackTrace;
  */
 public final class JfrFilter implements Filter {
 
-  private static final String EXCHANGE_ID_ATTRIBUTE = "com.github.marschall.jfr.servlet.exchangeId";
+  static final String EXCHANGE_ID_ATTRIBUTE = "com.github.marschall.jfr.servlet.exchangeId";
 
   private static final AtomicLong EXCHANGE_ID_GENERATOR = new AtomicLong();
 
@@ -39,10 +39,10 @@ public final class JfrFilter implements Filter {
     Long exchangeId = (Long) request.getAttribute(EXCHANGE_ID_ATTRIBUTE);
     if (exchangeId != null) {
       // dispatched request
-      filterRelatedRequest(exchangeId, request, response, chain);
+      this.filterRelatedRequest(exchangeId, request, response, chain);
 
     } else {
-      filterNewRequest(request, response, chain);
+      this.filterNewRequest(request, response, chain);
     }
   }
 
@@ -116,7 +116,7 @@ public final class JfrFilter implements Filter {
     private long exchangeId;
 
     long getExchangeId() {
-      return exchangeId;
+      return this.exchangeId;
     }
 
     void setExchangeId(long exchangeId) {
@@ -183,7 +183,7 @@ public final class JfrFilter implements Filter {
     }
 
     long getExchangeId() {
-      return exchangeId;
+      return this.exchangeId;
     }
 
     void setExchangeId(long exchangeId) {
