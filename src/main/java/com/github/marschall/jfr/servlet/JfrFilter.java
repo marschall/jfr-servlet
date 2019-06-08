@@ -70,14 +70,14 @@ public final class JfrFilter implements Filter {
     }
   }
 
-  private static void copyResponeAttributes(HttpServletResponse httpRespone, HttpEvent event) {
-    event.setStatus(httpRespone.getStatus());
-  }
-
   private static void copyHttpRequestAttributes(HttpServletRequest httpRequest, HttpEvent event) {
     event.setMethod(httpRequest.getMethod());
     event.setUri(httpRequest.getRequestURI());
     event.setQuery(httpRequest.getQueryString());
+  }
+
+  private static void copyResponeAttributes(HttpServletResponse httpRespone, HttpEvent event) {
+    event.setStatus(httpRespone.getStatus());
   }
 
   private void filterRelatedRequest(long exchangeId, ServletRequest request, ServletResponse response, FilterChain chain)
