@@ -74,6 +74,7 @@ public final class JfrFilter implements Filter {
     event.setMethod(httpRequest.getMethod());
     event.setUri(httpRequest.getRequestURI());
     event.setQuery(httpRequest.getQueryString());
+    event.setDispatcherType(httpRequest.getDispatcherType().name());
   }
 
   private static void copyResponeAttributes(HttpServletResponse httpRespone, HttpEvent event) {
@@ -146,6 +147,10 @@ public final class JfrFilter implements Filter {
     @Label("Status")
     @Description("The HTTP response status code")
     private int status;
+    
+    @Label("Dispatcher Type")
+    @Description("The dispatcher type of this request")
+    private String dispatcherType;
 
     @ExchangeId
     private long exchangeId;
@@ -180,6 +185,14 @@ public final class JfrFilter implements Filter {
 
     void setStatus(int status) {
       this.status = status;
+    }
+
+    String getDispatcherType() {
+      return this.dispatcherType;
+    }
+
+    void setDispatcherType(String dispatcherType) {
+      this.dispatcherType = dispatcherType;
     }
 
     long getExchangeId() {
