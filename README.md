@@ -1,9 +1,9 @@
 JFR Servlet [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/jfr-servlet.svg)](https://www.javadoc.io/doc/com.github.marschall/jfr-servlet)
 ===========
 
-A servlet filter that generates JFR events. The filter can correlate multiple async events that belong to the same original HTTP request.
+A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events. This filter can correlate multiple async events that belong to the same original HTTP request.
 
-```
+```xml
 <dependency>
   <groupId>com.github.marschall</groupId>
   <artifactId>jfr-servlet</artifactId>
@@ -12,6 +12,8 @@ A servlet filter that generates JFR events. The filter can correlate multiple as
 ```
 
 ![Flight Recording of some HTTP requests](https://github.com/marschall/jfr-servlet/raw/master/src/main/javadoc/Screenshot.png)
+
+This project requires Java 11.
 
 Usage
 -----
