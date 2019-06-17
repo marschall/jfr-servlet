@@ -3,7 +3,7 @@ JFR Servlet [![Maven Central](https://maven-badges.herokuapp.com/maven-central/c
 
 A servlet filter that generates JFR events. The filter can correlate multiple async events that belong to the same original HTTP request.
 
-```
+```xml
 <dependency>
   <groupId>com.github.marschall</groupId>
   <artifactId>jfr-servlet</artifactId>
