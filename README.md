@@ -7,7 +7,7 @@ A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events.
 <dependency>
   <groupId>com.github.marschall</groupId>
   <artifactId>jfr-servlet</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
