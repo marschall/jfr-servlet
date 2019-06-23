@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -31,6 +32,16 @@ public final class JfrFilter implements Filter {
   static final String EXCHANGE_ID_ATTRIBUTE = "com.github.marschall.jfr.servlet.exchangeId";
 
   private static final AtomicLong EXCHANGE_ID_GENERATOR = new AtomicLong();
+
+  @Override
+  public void init(FilterConfig filterConfig) {
+    // nothing
+  }
+
+  @Override
+  public void destroy() {
+    // nothing
+  }
 
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -113,7 +124,7 @@ public final class JfrFilter implements Filter {
   @Category("HTTP")
   @StackTrace(false)
   static class RelatedHttpEvent extends Event {
-    
+
     @Label("Dispatcher Type")
     @Description("The dispatcher type of this request")
     private String dispatcherType;
@@ -160,7 +171,7 @@ public final class JfrFilter implements Filter {
     @Label("Status")
     @Description("The HTTP response status code")
     private int status;
-    
+
     @Label("Dispatcher Type")
     @Description("The dispatcher type of this request")
     private String dispatcherType;
