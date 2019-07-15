@@ -1,7 +1,7 @@
 JFR Servlet [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/jfr-servlet.svg)](https://www.javadoc.io/doc/com.github.marschall/jfr-servlet)
 ===========
 
-A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events. This filter can correlate multiple async events that belong to the same original HTTP request.
+A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events.
 
 ```xml
 <dependency>
@@ -40,3 +40,9 @@ If your web application is `metadata-complete` then you manually need to add the
   <dispatcher>ASYNC</dispatcher>
 </filter-mapping>
 ```
+
+Correlating Dispatches
+----------------------
+
+A single request may traverse the servlet chain multiple times, either because of a server side redirect or because of asynchronous processing. We generate a unique exchangeId for every request so that multiple dispatches of the same request can be correlated.
+
