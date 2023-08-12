@@ -1,4 +1,4 @@
-JFR Servlet [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/jfr-servlet.svg)](https://www.javadoc.io/doc/com.github.marschall/jfr-servlet) [![Build Status](https://travis-ci.org/marschall/jfr-servlet.svg?branch=master)](https://travis-ci.org/marschall/jfr-servlet)
+JFR Servlet [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/jfr-servlet) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/jfr-servlet.svg)](https://www.javadoc.io/doc/com.github.marschall/jfr-servlet)
 ===========
 
 A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events.
@@ -7,7 +7,7 @@ A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events.
 <dependency>
   <groupId>com.github.marschall</groupId>
   <artifactId>jfr-servlet</artifactId>
-  <version>0.1.2</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
