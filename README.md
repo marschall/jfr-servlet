@@ -15,6 +15,8 @@ A servlet filter that generates [JFR](https://openjdk.java.net/jeps/328) events.
 
 This project requires Java 11.
 
+Versions 1.x are for the `javax.servlet` namespace, versions 2.x are for the `jakarta.servlet` namespace.
+
 Usage
 -----
 

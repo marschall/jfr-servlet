@@ -3,10 +3,10 @@ package com.github.marschall.jfr.servlet;
 import java.util.EnumSet;
 import java.util.Set;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration.Dynamic;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.FilterRegistration.Dynamic;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
 
 /**
  * Registers {@link JfrFilter} for {@link DispatcherType#REQUEST}

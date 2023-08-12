@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+
+import jakarta.servlet.ServletException;
 
 class JfrFilterTests {
 
